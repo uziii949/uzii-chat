@@ -1,7 +1,7 @@
 # 💬 Uzii Chat
 
 <p align="center">
-  <img src="assets/images/splash_logo.png" width="120" alt="Uzii Chat Logo"/>
+  <img src="assets/images/screenshots/icon.png" width="120" alt="Uzii Chat Logo"/>
 </p>
 
 <p align="center">
@@ -13,6 +13,46 @@
   <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black"/>
   <img src="https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white"/>
   <img src="https://img.shields.io/badge/Platform-Android%20%7C%20iOS-green?style=for-the-badge"/>
+</p>
+
+---
+
+## 📱 Screenshots
+
+### Onboarding & Auth
+<p align="center">
+  <img src="assets/images/screenshots/openscreen.png" width="200" alt="Splash"/>
+  &nbsp;&nbsp;
+  <img src="assets/images/screenshots/login.png" width="200" alt="Login"/>
+  &nbsp;&nbsp;
+  <img src="assets/images/screenshots/register.png" width="200" alt="Register"/>
+  &nbsp;&nbsp;
+  <img src="assets/images/screenshots/resetpass.png" width="200" alt="Reset Password"/>
+</p>
+
+### Chat & Home
+<p align="center">
+  <img src="assets/images/screenshots/home.png" width="200" alt="Home"/>
+  &nbsp;&nbsp;
+  <img src="assets/images/screenshots/features.png" width="200" alt="Chat Features"/>
+  &nbsp;&nbsp;
+  <img src="assets/images/screenshots/status.png" width="200" alt="Status"/>
+</p>
+
+### Profile & About
+<p align="center">
+  <img src="assets/images/screenshots/profile.png" width="200" alt="Profile"/>
+  &nbsp;&nbsp;
+  <img src="assets/images/screenshots/about.png" width="200" alt="About"/>
+  &nbsp;&nbsp;
+  <img src="assets/images/screenshots/about2.png" width="200" alt="About 2"/>
+</p>
+
+### Call & Avatar
+<p align="center">
+  <img src="assets/images/screenshots/call.png" width="200" alt="Call Screen"/>
+  &nbsp;&nbsp;
+  <img src="assets/images/screenshots/avatar.png" width="200" alt="Full Screen Avatar"/>
 </p>
 
 ---
@@ -37,6 +77,7 @@
 | 🗑️ Delete Messages | Delete for me or everyone |
 | 🔍 Search | Search conversations |
 | 📱 Hero Animation | Smooth profile picture animations |
+| ✨ Message Animation | Smooth send/receive animations |
 
 ---
 
@@ -47,7 +88,6 @@
 - **Media Storage:** Cloudinary
 - **State Management:** Provider
 - **Push Notifications:** Firebase Cloud Messaging (FCM)
-- **Local Auth:** Firebase Authentication
 - **Font:** Inter
 
 ---
@@ -151,7 +191,8 @@ service cloud.firestore {
     match /statuses/{statusId} {
       allow read: if request.auth != null;
       allow create, update: if request.auth != null;
-      allow delete: if request.auth != null && request.auth.uid == resource.data.userId;
+      allow delete: if request.auth != null
+        && request.auth.uid == resource.data.userId;
     }
   }
 }
